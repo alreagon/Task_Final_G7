@@ -1,6 +1,7 @@
 package com.example.task_final_g7.di
 
 import androidx.room.Room
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.task_final_g7.data.UserRepository
 import com.example.task_final_g7.data.local.UserRoomDatabase
 import com.example.task_final_g7.network.ApiService

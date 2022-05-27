@@ -43,7 +43,7 @@ android {
 //            buildConfigField("String", "APP_NAME", "\"INI Koin\"")
             manifestPlaceholders = [
                     appNameSuffix: "_iqiyi",
-                    appIcon: "@mipmap/ic_iqiyi",
+                    appIcon      : "@mipmap/ic_iqiyi",
                     appIconRound : "@mipmap/ic_iqiyi"
             ]
 //            signingConfig signingConfigs.config
@@ -138,5 +138,10 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.4.2'
     kapt 'androidx.room:room-compiler:2.4.2'
 
+    // Mock
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+    testImplementation 'io.mockk:mockk:2.28.2'
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:2.28.2'
+    androidTestImplementation 'org.mockito:mockito-android:2.24.5'
 
 }

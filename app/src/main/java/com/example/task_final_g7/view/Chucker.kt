@@ -5,24 +5,24 @@ import android.os.Bundle
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
-import com.example.task_final_g7.R
-import com.example.task_final_g7.databinding.ActivityMainBinding
+import com.example.task_final_g7.databinding.ActivityChuckerBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.*
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class Chucker : AppCompatActivity() {
+    private lateinit var binding : ActivityChuckerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityChuckerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(ChuckerInterceptor(this))
             .build()
+
 
         // Chucker Collector
         val myChuckerCollector = ChuckerCollector(
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
                         // To access the TextView, switch to the Main thread
                         CoroutineScope(Dispatchers.Main).launch {
-                            binding.textView4.text = myResponse
+                            binding.textView3.text = myResponse
                         }
                     }
                 }

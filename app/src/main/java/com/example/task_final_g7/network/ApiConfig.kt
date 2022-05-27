@@ -1,5 +1,6 @@
 package com.example.task_final_g7.network
 
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,6 +13,7 @@ class ApiConfig {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+//                .addInterceptor(ChuckerInterceptor())
                 .build()
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
