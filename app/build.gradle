@@ -18,14 +18,61 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
-        release {
+        debug {
+            applicationIdSuffix ".debug"
             minifyEnabled false
+            debuggable true
+//            buildConfigField("String", "APP_NAME", "\"INI DEBUG\"")
+            manifestPlaceholders = [
+                    appNameSuffix: "_demo",
+                    appIcon      : "@mipmap/ic_launcher",
+                    appIconRound : "@mipmap/ic_launcher"
+
+            ]
+//            signingConfig signingConfigs.debug
+        }
+
+        iqiyi {
+            minifyEnabled false
+            debuggable false
+//            buildConfigField("String", "APP_NAME", "\"INI Koin\"")
+            manifestPlaceholders = [
+                    appNameSuffix: "_iqiyi",
+                    appIcon: "@mipmap/ic_iqiyi",
+                    appIconRound : "@mipmap/ic_iqiyi"
+            ]
+//            signingConfig signingConfigs.config
+        }
+
+        release {
+            minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "APP_NAME", "\"INI RELEASE\"")
+            manifestPlaceholders = [appNameSuffix: "_release"]
+//            signingConfig signingConfigs.config
         }
     }
+
+    flavorDimensions "version"
+    productFlavors {
+        demo {
+            dimension "version"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full {
+            dimension "version"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
